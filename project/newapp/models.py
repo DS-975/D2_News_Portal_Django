@@ -37,7 +37,7 @@ class Post(models.Model):
     dateCreation = models.DateTimeField(auto_now_add=True)
     postCategory = models.ManyToManyField(Category, through='PostCategory')
     title = models.CharField(max_length=128)
-    test = models.TextField()
+    text = models.TextField()
     rating = models.SmallIntegerField(default=0)
 
     def like(self):
@@ -47,7 +47,6 @@ class Post(models.Model):
     def dislike(self):
         self.rating -= 1
         self.save()
-
 
     def preview(self):
         return self.text[0:123] + '...'
